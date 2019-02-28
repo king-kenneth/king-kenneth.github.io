@@ -9,8 +9,9 @@
 let x = 25;
 let y = 25;
 let meme;
+
 function preload(){
-  meme = loadImage('gear.png');
+  meme = loadImage("assets/kool.gif");
 }
 
 function setup() {
@@ -21,6 +22,7 @@ function draw() {
 //background(255);
   Keyboy();
   mouseboy();
+  keyandmouseBoy();
  
   
 }
@@ -71,7 +73,7 @@ function mouseboy() {
 }
  
 function keyandmouseBoy() { 
-  if (keyCode === ALT){
-    image(meme ,mouseX ,mouseY, rw, rh);
-}
+  if (keyCode === ALT && keyIsPressed === true){
+    image(meme ,mouseX ,mouseY, 230 , 129.5);
+  }
 }
