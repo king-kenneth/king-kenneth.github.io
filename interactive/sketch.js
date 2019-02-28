@@ -8,26 +8,32 @@
 
 let x = 25;
 let y = 25;
+let meme;
+function preload(){
+  meme = loadImage('gear.png');
+}
+
 function setup() {
   createCanvas(windowWidth, windowHeight);
 }
 
 function draw() {
 //background(255);
-  checkingForKey();
+  Keyboy();
   mouseboy();
  
   
 }
 
-function checkingForKey() {
+//Keyboard Activetys
+function Keyboy() {
   fill(0);
   rect(x, y, 50, 50);
   if (keyIsPressed) {
     if (keyCode === LEFT_ARROW && x  > 0) {
       x -= 10;
     } 
-    if (keyCode === RIGHT_ARROW && x < width/2) {
+    if (keyCode === RIGHT_ARROW && x < width - 50) {
       x += 10;
     }
     if (keyCode === UP_ARROW && y  > 0) {
@@ -44,11 +50,28 @@ function checkingForKey() {
   }
  
 }
-function mouseboy(){
-  if (mouseX > width/2);
-    
-  else;
-    rect(mouseX, mouseY, 25, 25);
 
+//Mouse Activetys 
+function mouseClicked() {
+  fill(0,0,255);
+  ellipse(mouseX, mouseY, 50, 50);
+}
+
+function doubleClicked() {
+  fill(150,0,150);
+  ellipse(mouseX, mouseY, 100, 100);
+}
+
+
+function mouseboy() {
+  fill(255, 0, 0);
+  ellipse(mouseX, mouseY, 25, 25);
+
+  
 }
  
+function keyandmouseBoy() { 
+  if (keyCode === ALT){
+    image(meme ,mouseX ,mouseY, rw, rh);
+}
+}
