@@ -1,4 +1,4 @@
-// Project Title
+// random drawing fun
 // Your Name
 // Date
 //
@@ -20,15 +20,15 @@ function setup() {
 
 function draw() {
 //background(255);
-  Keyboy();
-  mouseboy();
-  keyandmouseBoy();
+  keyBoy();
+  mouseBoy();
+  keyAndMouseBoy();
  
   
 }
 
 //Keyboard Activetys
-function Keyboy() {
+function keyBoy() {
   fill(0);
   rect(x, y, 50, 50);
   if (keyIsPressed) {
@@ -45,7 +45,7 @@ function Keyboy() {
       y += 10;
     }
     if (keyCode === CONTROL) {
-      background(255);
+      background(meme);
     }
     
     
@@ -64,15 +64,14 @@ function doubleClicked() {
   ellipse(mouseX, mouseY, 100, 100);
 }
 
-
-function mouseboy() {
+function mouseBoy() {
   fill(255, 0, 0);
   ellipse(mouseX, mouseY, 25, 25);
-
-  
 }
  
-function keyandmouseBoy() { 
+
+//Keyboard and mouse  Activetys
+function keyAndMouseBoy() { 
   if (keyCode === ALT && keyIsPressed === true){
     image(meme ,mouseX ,mouseY, 230 , 129.5);
   }
