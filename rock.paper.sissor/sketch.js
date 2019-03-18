@@ -94,7 +94,7 @@ function menu() {
   fill(255);
   text("Rock", 150 + 35, 520 + 40);
   text("Scissor", 450 + 30, 520 + 40);
-  fill(0);
+  fill(255);
   text("Paper", 300 + 35, 520 + 40);
   fill(255);
   text("HOW TO PLAY", 840 + 20, 520 + 30);
