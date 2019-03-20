@@ -4,9 +4,14 @@
 //
 // Extra for Experts:
 // - describe what you did to take this project "above and beyond"
-
+let user = prompt("Hello User, What is your name?");
 let computerChoice;
 let whereAmI= start;
+
+function preload(){
+  meme = loadImage("assets/kool.gif");
+}
+
 function setup() {
   createCanvas(windowWidth, windowHeight);
   computerPicksElement();
@@ -14,8 +19,9 @@ function setup() {
 }
 
 function draw() {
-  background(220);
-  menu()
+
+
+  secret();
   textSize(32);
   text(computerChoice,10, 10, 700, 800);
 }
@@ -31,7 +37,6 @@ function computerPicksElement() {
     computerChoice = "ice"; 
   }
 }
-
 
 function menu() {
   while (whereAmI= start){
@@ -56,3 +61,12 @@ function mousePressed() {
     whereAmI = game;
     }
   }
+
+function secret(){
+  if (user === "Elon Musk") {
+    background(meme);
+  }
+  else{
+    background(220);
+  }
+}
