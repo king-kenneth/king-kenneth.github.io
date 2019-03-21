@@ -65,7 +65,6 @@ function draw() {
   }, 3000); // delays the win / lost image appearance by 3 seconds
 }
 
-// menu function that creates the player names, rock paper scissors, "Reset" button, and "How to Play" button.
 function menu() {
   noStroke();
   fill(255);
@@ -90,17 +89,17 @@ function menu() {
   
   textSize(14);
   fill(255);
-  text("Rock", 150 + 35, 520 + 40);
-  text("Scissor", 450 + 30, 520 + 40);
+  text("fire", 150 + 35, 520 + 40);
+  text("water", 450 + 30, 520 + 40);
   fill(255);
-  text("Paper", 300 + 35, 520 + 40);
+  text("ice", 300 + 35, 520 + 40);
   fill(255);
   text("HOW TO PLAY", 840 + 20, 520 + 30);
   text("Choose your", 50, 500);
   text("move!", 50, 525);
 }
 
-// function that is called when "reset" button is pressed
+
 function reset() {
   user_count = 0;
   computer_count = 0;
