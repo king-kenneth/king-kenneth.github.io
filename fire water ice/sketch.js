@@ -17,14 +17,11 @@ function preload(){
 function setup() {
   createCanvas(windowWidth, windowHeight);
   computerPicksElement();
-  menu()
+  secret();
+  //menu()
 }
 
 function draw() {
-
- 
-
-  secret();
   textSize(32);
   text(computerChoice,10, 10, 700, 800);
 }
@@ -77,10 +74,8 @@ function secret(){
   if (user === "Elon Musk") {
     background(meme);
   }
-  else if (user === "Andrew") {
+  if (user === "Andrew") {
     background(furry);
   }
-  else{
-    background(220);
-  }
+  
 }

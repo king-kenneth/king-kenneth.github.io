@@ -87,9 +87,7 @@ function menu() {
     fill('gray'); // allows the color change when mouse is hovered
   }
   rect(840, 520, 150, 50);
-  // image(Rock3, 150, 410, 119, 236);
-  // image(Paper3, 300, 410, 119, 236);
-  // image(Scissors3, 450, 410, 119, 236);
+  
   textSize(14);
   fill(255);
   text("Rock", 150 + 35, 520 + 40);
