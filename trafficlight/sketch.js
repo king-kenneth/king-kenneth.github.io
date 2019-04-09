@@ -1,89 +1,140 @@
-// Traffic Light Starter Code
+// Grid Demo
 // Dan Schellenberg
-// Sept 25, 2018
+// April 1, 2019
 
-// GOAL: make a 'traffic light' simulator. For now, just have the light
-// changing according to time. You may want to investigate the millis()
-// function at https://p5js.org/reference/
+let gridSize = 50;
+let grid;
+let cellSize;
 
-let state;
-let glighttime;
-let ylighttime;
-let rlighttime;
-let lastTime;
 function setup() {
-  createCanvas(windowWidth, windowHeight);
-  state = 1;
-  glighttime = 5000;
-  ylighttime = 1500;
-  rlighttime = 3000;
-  lastTime = 0;
+  if (windowWidth > windowHeight){
+    
+    createCanvas(windowHeight, windowHeight);
+  }
+  else{
+    createCanvas(windowWidth, windowWidth);
+  }
+
+  if (windowWidth > windowHeight) {
+    createCanvas(windowHeight, windowHeight);
+  }
+  else {
+    createCanvas(windowWidth, windowWidth);
+  }
+  
+  grid = createRandom2DArray(gridSize, gridSize);
+  
+  cellSize = width/gridSize;
 }
 
 function draw() {
   background(255);
-  drawOutlineOfLights();
-  checkstate();
-  displaycolor();
+  displayGrid();
 }
 
-function drawOutlineOfLights() {
-  //box
-  rectMode(CENTER);
-  fill(0);
-  rect(width/2, height/2, 75, 200, 10);
-
-  //lights
-  fill(255);
-  ellipse(width/2, height/2 - 65, 50, 50); //top
-  ellipse(width/2, height/2, 50, 50); //middle
-  ellipse(width/2, height/2 + 65, 50, 50); //bottom
-}
-
-function checkstate(){
-  //checks the state 
-  if (state = 1 && millis() > lastTime + glighttime){
-    state = 2;
-    lastTime = millis();
-  }
-  else if (state = 2 && millis() > lastTime + ylighttime){
-    state = 3;
-    lastTime = millis();
-  }
-  else if (state = 3 && millis() > lastTime + rlighttime){
-    state = 1;
-    lastTime = millis();
-}
-}
-
-function displaycolor(){
-  //Displays correct color
-  if (state === 1){
-    showgreenlight();
-  }
-  if (state === 2){
-    showyellowlight();
-  }
-  if (state === 3){
-    showredlight();
+function displayGrid() {
+  for (let y = 0; y < gridSize; y++) {
+    for (let x = 0; x < gridSize; x++) {
+      if (grid[y][x] === 0) {
+        fill(255);
+      }
+      else {
+        fill(0);
+      }
+      rect(x*cellSize, y*cellSize, cellSize, cellSize);
+    }
   }
 }
 
-function showredlight(){
-  fill("red");
-  ellipse(width/2, height/2 - 65, 50, 50); //top
+
+function create2DArray(cols, rows) {
+  let emptyArray = [];
+  for (let i = 0; i < rows; i++) {
+    emptyArray.push([]);
+    for (let j = 0; j < cols; j++) {
+      emptyArray[i].push(0);
+    }
+  }
+  return emptyArray;
 }
 
-function showyellowlight(){
-  fill("yellow");
-  ellipse(width/2, height/2, 50, 50); //middle
+function createRandom2DArray(cols, rows) {
+  let emptyArray = [];
+  for (let i = 0; i < rows; i++) {
+    emptyArray.push([]);
+    for (let j = 0; j < cols; j++) {
+      if (random(100) < 50) {
+        emptyArray[i].push(0);
+      }
+      else {
+        emptyArray[i].push(1);
+      }
+    }
+  }
+  return emptyArray;
 }
 
-function showgreenlight(){
-  fill("green");
-  ellipse(width/2, height/2 + 65, 50, 50); //bottom
+
+
+function keyPressed() {
+  if (key === " ") {
+    update();
+  }
+  if (key === "r") {
+    grid = create2DArray(gridSize, gridSize);
+  }
 }
 
 
+
+function mousePressed(){
+  let xcoord = floor(mouseX / cellSize);
+  let ycoord = floor(mouseY / cellSize);
+
+  if (grid[ycoord][xcoord] === 1){
+    grid[ycoord][xcoord] = 0;
+  }
+  else{
+function update() {
+  let nextTurn = create2DArray(gridSize, gridSize);
+
+  for (let y = 0; y < gridSize; y++) {
+    for (let x = 0; x < gridSize; x++) {
+      let neighbors = 0;
+
+      //look at the 3x3 grid around the current location
+      for (let i = -1; i <= 1; i++) {
+        for (let j = -1; j <= 1; j++) {
+          if (y+i >= 0 && y+i < gridSize && x+j >= 0 && x+j < gridSize) {
+            neighbors += grid[y+i][x+j];
+          }
+        }
+      }
+
+      neighbors -= grid[y][x];
+
+      //applying the rules of the game
+      if (grid[y][x] === 1) { //alive
+        if (neighbors === 2 || neighbors === 3) {
+          nextTurn[y][x] = 1;
+        }
+        else {
+          nextTurn[y][x] = 0;
+        }
+      }
+
+      if (grid[y][x] === 0) { //dead
+        if (neighbors === 3) {
+          nextTurn[y][x] = 1;
+        }
+        else {
+          nextTurn[y][x] = 0;
+        }
+      }
+    }
+  }
+
+  grid = nextTurn;
+}
 
 

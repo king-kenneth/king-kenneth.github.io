@@ -8,7 +8,7 @@ function setup() {
   x = 0;
   y = 0;
   squareSize = 300;
-  speed = 500;
+  speed = 50;
   state = 1;
 }
 
