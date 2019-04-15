@@ -76,23 +76,21 @@ function createRandom2DArray(cols, rows) {
 
 function keyPressed() {
   if (key === "UP_ARROW") {
-  // (let direction = up);
+    direction = "up";
   }
   
-  // eslint-disable-next-line no-empty
   if (key === "DOWN_ARROW") {
-
+    direction = "down";
   }
-  // eslint-disable-next-line no-empty
+  
   if (key === "LEFT_ARROW") {
-
+    direction = "left";
   }
-  // eslint-disable-next-line no-empty
-  if (key === "RIGHT_ARROW") {
 
+  if (key === "RIGHT_ARROW") {
+    direction = "right";
   }
 }
-
 
 function mousePressed() {
   let xcoord = floor(mouseX / cellSize);
