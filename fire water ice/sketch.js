@@ -5,25 +5,26 @@
 // Extra for Experts:
 // - describe what you did to take this project "above and beyond"
 
-let user = prompt("Hello User, What is your name?");
 let computerChoice;
-let whereAmI= start;
-
-function preload(){
-  meme = loadImage("assets/kool.gif");
-  furry = loadImage("assets/k.png");
-}
+let whereAmI = menu;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  computerPicksElement();
-  secret();
-  menu()
+  computerPicksElement()
 }
 
 function draw() {
-  textSize(32);
-  text(computerChoice,10, 10, 700, 800);
+  if (whereAmI = menu){
+    background(220);
+    displayButton()
+  }
+  
+  
+  //textSize(32)
+  // text(computerChoice,10, 10, 700, 800);
+}
+function displayButton(){
+      rect( 50, 50, width / 2, height / 2)
 }
 
 
@@ -31,22 +32,10 @@ function computerPicksElement() {
   computerChoice = Math.random();
   if (0 < computerChoice && computerChoice <= 0.33) {
     computerChoice = "fire";
-  }
-  else if (0.34 < computerChoice && computerChoice < 0.66) { 
+  } else if (0.34 < computerChoice && computerChoice < 0.66) { 
     computerChoice = "water";
-  }
-  else {
+  } else {
     computerChoice = "ice"; 
   }
 }
 
-
-function secret(){
-  if (user === "Elon Musk") {
-    background(meme);
-  }
-  if (user === "Andrew") {
-    background(furry);
-  }
-  
-}
